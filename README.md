@@ -89,7 +89,7 @@ node test/mock-v2.mjs
 ## 相关技能
 
 本插件用到的 DSH 技能（推送、发布、上架）独立维护在
-[dsh-skills](https://github.com/Luca-42/dsh-skills)：
+[skill](https://github.com/Luca-42/skill)：
 `github-push-ssh443`、`npm-publish-2fa`、`dsh-plugin-market`。
 
 本仓库的 [`docs/PUSH-NOTES.md`](docs/PUSH-NOTES.md) 保留了同一主题的排查过程与结论。
