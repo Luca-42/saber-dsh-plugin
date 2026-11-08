@@ -74,6 +74,14 @@ node test/mock-v2.mjs
 `mock-v2.mjs` 会校验：JSON Schema 合法（`required` 必须是数组）、翻译请求体与 `Idempotency-Key`、
 任务渲染、页面图片落盘、术语表读取。
 
+## 随附技能（Skills）
+
+- [`skills/github-push-ssh443/`](skills/github-push-ssh443/SKILL.md)：本机推送 GitHub 的可靠姿势
+  （22 端口被封 → 走 `ssh.github.com:443`），含报错对照、仓库本地配置、验证命令，以及三条不能走的通道。
+- [`docs/PUSH-NOTES.md`](docs/PUSH-NOTES.md)：同一主题的排查过程与结论，供维护者查阅。
+
+插件安装到 DSH 后，`skills/` 随包分发；重启 dsh2 后可在会话技能列表中验证是否被加载。
+
 ## 设计约束
 
 - 宿主半身**零运行时依赖**（不 import `@deepseek-ai/*`），避免污染 profile 的解析链。
