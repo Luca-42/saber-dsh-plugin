@@ -1,5 +1,7 @@
 # dsh-plugin-saber（P1）
 
+[![npm version](https://img.shields.io/npm/v/dsh-plugin-saber.svg)](https://www.npmjs.com/package/dsh-plugin-saber)
+
 让 DSH 用自然语言驱动本机 **Saber-Translator**（漫画翻译器）的插件。
 
 - **v2 后端（Saber 3.5+）**：完整链路——查书、看页面、排翻译任务、看进度、暂停/取消/重试、取译图、读写术语表。
@@ -43,6 +45,16 @@
 - `autoStart: true` 时，工具发现后端未运行会尝试拉起 `installPath` 下的 `Saber-Translator.exe --role launcher ...` 并等待 `/api/v2/health`。
 - 插件只停止**自己启动**的进程（记着 PID），不会动你在用的实例。
 - API 版本自动探测：先探 `/api/v2/health`，再探 `/api/server-info`。
+
+## 安装（npm，推荐）
+
+已发布到 npm：[dsh-plugin-saber](https://www.npmjs.com/package/dsh-plugin-saber)
+
+```bash
+dsh plugin --profile web add dsh-plugin-saber
+```
+
+重启 dsh 后工具生效。插件零运行时依赖，安装包约 23 KB。
 
 ## 安装（本地 link 方式）
 
