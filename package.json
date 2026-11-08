@@ -1,8 +1,17 @@
 {
   "name": "dsh-plugin-saber",
   "version": "0.2.0",
-  "private": true,
   "description": "DSH plugin: drive a local Saber-Translator manga translator through its HTTP API (translate, jobs, images, glossary, backend lifecycle).",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "deepseek-harness",
+    "saber-translator",
+    "manga",
+    "translator",
+    "comic"
+  ],
   "type": "module",
   "repository": {
     "type": "git",
