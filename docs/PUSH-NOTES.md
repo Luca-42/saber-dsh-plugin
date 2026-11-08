@@ -17,12 +17,17 @@ ssh://git@ssh.github.com:443/Luca-42/saber-dsh-plugin.git
 
 ```bash
 git remote set-url origin ssh://git@ssh.github.com:443/Luca-42/saber-dsh-plugin.git
+git config core.sshCommand "ssh -p 443 -i 'D:/AI/DeepSeek/DSH_HOME/git-push/id_rsa' -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 ```
+
+私钥由插件生成并托管在 `D:\AI\DeepSeek\DSH_HOME\git-push\id_rsa`（不随仓库分发）。
+上面两条都写进**仓库本地配置**后，任何会话里直接 `git push` 都能用，无需再折腾插件通道。
 
 验证：
 
 ```bash
-ssh -T -p 443 git@ssh.github.com          # 期望：Hi Luca-42! You've successfully authenticated...
+ssh -T -p 443 -i "D:/AI/DeepSeek/DSH_HOME/git-push/id_rsa" -o IdentitiesOnly=yes git@ssh.github.com
+# 期望：Hi Luca-42! You've successfully authenticated...
 git ls-remote origin                       # 期望：列出 refs/heads/main
 ```
 
