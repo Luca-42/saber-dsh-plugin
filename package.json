@@ -15,9 +15,15 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Luca-42/saber-dsh-plugin.git"
+    "url": "git+https://github.com/Luca-42/saber-dsh-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Luca-42/saber-dsh-plugin/issues"
   },
   "homepage": "https://github.com/Luca-42/saber-dsh-plugin#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT",
   "main": "lib/index.js",
   "exports": {
