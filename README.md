@@ -56,6 +56,16 @@ dsh plugin --profile web add dsh-plugin-saber
 
 重启 dsh 后工具生效。插件零运行时依赖，安装包约 23 KB。
 
+## 从插件市场安装
+
+插件页 → **发现** → **添加索引源** → 粘贴索引地址：
+
+```
+https://luca-42.github.io/saber-dsh-plugin/index.json
+```
+
+然后在市场里找到「Saber 漫画翻译」并安装。
+
 ## 安装（本地 link 方式）
 
 本包存放在 `D:\AI\DeepSeek\dsh2\plugins\saber-dsh-plugin`，通过 junction 链接进 dsh2 的 web profile：
