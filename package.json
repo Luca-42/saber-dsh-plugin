@@ -1,0 +1,38 @@
+{
+  "name": "dsh-plugin-saber",
+  "version": "0.2.0",
+  "private": true,
+  "description": "DSH plugin: drive a local Saber-Translator manga translator through its HTTP API (translate, jobs, images, glossary, backend lifecycle).",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luca-42/saber-dsh-plugin.git"
+  },
+  "homepage": "https://github.com/Luca-42/saber-dsh-plugin#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.0-rc.2": "compatible",
+        "0.2.1-rc.2": "compatible",
+        "0.2.1-rc.3": "compatible"
+      }
+    }
+  }
+}
