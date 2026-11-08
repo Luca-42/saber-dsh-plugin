@@ -125,3 +125,60 @@ curl -s https://registry.npmjs.org/<pkg>/<version> \
 - 打 tag 并推送：`git tag -a v0.2.0 -m "..." && git push origin v0.2.0`；
 - README 补 npm 安装方式与徽章；
 - **token 一旦出现在聊天、日志或临时文件里就视为已泄露，立即去 npm 轮换**。
+
+## 插件市场索引与仓库公开（2026-11-08）
+
+### 市场索引文件
+
+DSH 插件市场是一个静态 JSON 索引，指向 npm 包或 Git 仓库版本。
+
+- 索引位置：`docs/index.json`（配合 GitHub Pages 的 `/docs` 发布目录）
+- 图标：`docs/icon.svg`，索引里写相对路径 `icon.svg`——**相对索引 URL 解析**
+- 插件条目：`name` 必须与 npm 包名一致；`versions[].source` 写 `{ "type": "npm" }`
+- `publishTimestamp` 用 npm registry 里该版本的发布时间（秒级 epoch），
+  由 `https://registry.npmjs.org/<pkg>` 的 `time[version]` 换算
+- `engines.dsh` 可选；写了就要与包自身声明一致，否则安装器会拒。本包未声明，索引里同样省略
+- 约束：索引 ≤128 MiB、返回 2xx、不经重定向；DSH 只校验格式，不校验内容真伪
+
+### 转公开（Pages 与 npm 源码链接的前提）
+
+GitHub → 仓库 → **Settings → General → Danger Zone → Change visibility → Make public**
+
+- 私有仓库**无法使用免费 GitHub Pages**（私有 Pages 需要 Pro 及以上）
+- npm 包页面的源码链接、市场索引地址也都要求仓库公开可读
+- 验证：
+
+```bash
+curl -s https://api.github.com/repos/Luca-42/saber-dsh-plugin | grep -E '"(visibility|private)"'
+# 期望：visibility "public" / private false
+```
+
+### 启用 GitHub Pages
+
+仓库 → **Settings → Pages** → Source: **Deploy from a branch** →
+Branch: `main`，Folder: **/docs** → Save
+
+1~2 分钟后索引地址为：
+
+```
+https://luca-42.github.io/saber-dsh-plugin/index.json
+```
+
+验证：
+
+```bash
+curl -s https://luca-42.github.io/saber-dsh-plugin/index.json | head -3
+# 期望：{ "format": 1, ...
+```
+
+### 在 DSH 里添加索引
+
+插件页 → **发现** → **添加索引源** → 粘贴上面的 URL → 浏览并安装。
+
+### 索引相关的坑
+
+- 转公开前不要指望 Pages 能访问；先公开再开 Pages。
+- Pages 有 CDN 缓存，改完索引要 push 并等一两分钟。
+- DSH 端也会缓存索引；看不到更新时重新添加索引源或重启 dsh。
+- `icon` 用相对路径时不要写成 `/icon.svg`（会从 Pages 根解析，404）。
+- 版本条目要一个个加；发新版后同步更新 `versions` 与 `publishTimestamp`。

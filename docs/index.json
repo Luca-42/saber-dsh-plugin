@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Luca's DSH plugins",
+    "zh": "Luca 的 DSH 插件"
+  },
+  "description": {
+    "en": "Plugins maintained by Luca-42 for DeepSeek Harness.",
+    "zh": "Luca-42 维护的 DeepSeek Harness 插件。"
+  },
+  "metadata": {
+    "categories": {
+      "translation": {
+        "title": { "en": "Translation", "zh": "翻译" }
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-plugin-saber",
+      "title": {
+        "en": "Saber Translator",
+        "zh": "Saber 漫画翻译"
+      },
+      "description": {
+        "en": "Drive a local Saber-Translator manga translator through its HTTP API: shelf, pages, translation jobs, job control, page images, glossary, backend lifecycle. Works with Saber 3.5+ (/api/v2) and degrades gracefully on 3.3.x.",
+        "zh": "用自然语言驱动本机 Saber-Translator 漫画翻译器：书架、页面、翻译任务、任务控制、页面图片、术语表、后端启停。支持 Saber 3.5+（/api/v2），3.3.x 自动降级。"
+      },
+      "icon": "icon.svg",
+      "author": "Luca-42",
+      "homepage": "https://github.com/Luca-42/saber-dsh-plugin#readme",
+      "repository": {
+        "url": "https://github.com/Luca-42/saber-dsh-plugin"
+      },
+      "metadata": {
+        "category": "translation"
+      },
+      "versions": [
+        {
+          "version": "0.2.0",
+          "publishTimestamp": 1794129939,
+          "source": { "type": "npm" }
+        }
+      ]
+    }
+  ]
+}
